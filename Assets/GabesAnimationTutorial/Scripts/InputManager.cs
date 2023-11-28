@@ -49,7 +49,7 @@ public static class InputManager
         
         //Set commander controlled inputs
         Inputs.InGame.Attack.performed += _ => _commander.Attack(CamToWorldRay());
-        Inputs.InGame.MoveTo.performed += _ => _commander.MoveTo(CamToWorldRay());
+        Inputs.InGame.Interact.performed += _ => _commander.Interact(CamToWorldRay());
 
         //Set camera controlled inputs
         Inputs.InGame.CameraMovement.performed += ctx => _commander.SetMoveDirection(ctx.ReadValue<Vector2>());

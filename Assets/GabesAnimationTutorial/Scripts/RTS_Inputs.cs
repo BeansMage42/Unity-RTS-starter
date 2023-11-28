@@ -37,7 +37,7 @@ public partial class @RTS_Inputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MoveTo"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""fc2516f0-e94a-4af8-8107-2ca523eddaec"",
                     ""expectedControlType"": ""Button"",
@@ -101,7 +101,7 @@ public partial class @RTS_Inputs: IInputActionCollection2, IDisposable
                     ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveTo"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -306,7 +306,7 @@ public partial class @RTS_Inputs: IInputActionCollection2, IDisposable
         // InGame
         m_InGame = asset.FindActionMap("InGame", throwIfNotFound: true);
         m_InGame_Settings = m_InGame.FindAction("Settings", throwIfNotFound: true);
-        m_InGame_MoveTo = m_InGame.FindAction("MoveTo", throwIfNotFound: true);
+        m_InGame_Interact = m_InGame.FindAction("Interact", throwIfNotFound: true);
         m_InGame_Attack = m_InGame.FindAction("Attack", throwIfNotFound: true);
         m_InGame_CameraMovement = m_InGame.FindAction("CameraMovement", throwIfNotFound: true);
         m_InGame_CameraZoom = m_InGame.FindAction("CameraZoom", throwIfNotFound: true);
@@ -376,7 +376,7 @@ public partial class @RTS_Inputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_InGame;
     private List<IInGameActions> m_InGameActionsCallbackInterfaces = new List<IInGameActions>();
     private readonly InputAction m_InGame_Settings;
-    private readonly InputAction m_InGame_MoveTo;
+    private readonly InputAction m_InGame_Interact;
     private readonly InputAction m_InGame_Attack;
     private readonly InputAction m_InGame_CameraMovement;
     private readonly InputAction m_InGame_CameraZoom;
@@ -386,7 +386,7 @@ public partial class @RTS_Inputs: IInputActionCollection2, IDisposable
         private @RTS_Inputs m_Wrapper;
         public InGameActions(@RTS_Inputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Settings => m_Wrapper.m_InGame_Settings;
-        public InputAction @MoveTo => m_Wrapper.m_InGame_MoveTo;
+        public InputAction @Interact => m_Wrapper.m_InGame_Interact;
         public InputAction @Attack => m_Wrapper.m_InGame_Attack;
         public InputAction @CameraMovement => m_Wrapper.m_InGame_CameraMovement;
         public InputAction @CameraZoom => m_Wrapper.m_InGame_CameraZoom;
@@ -403,9 +403,9 @@ public partial class @RTS_Inputs: IInputActionCollection2, IDisposable
             @Settings.started += instance.OnSettings;
             @Settings.performed += instance.OnSettings;
             @Settings.canceled += instance.OnSettings;
-            @MoveTo.started += instance.OnMoveTo;
-            @MoveTo.performed += instance.OnMoveTo;
-            @MoveTo.canceled += instance.OnMoveTo;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
@@ -425,9 +425,9 @@ public partial class @RTS_Inputs: IInputActionCollection2, IDisposable
             @Settings.started -= instance.OnSettings;
             @Settings.performed -= instance.OnSettings;
             @Settings.canceled -= instance.OnSettings;
-            @MoveTo.started -= instance.OnMoveTo;
-            @MoveTo.performed -= instance.OnMoveTo;
-            @MoveTo.canceled -= instance.OnMoveTo;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
@@ -506,7 +506,7 @@ public partial class @RTS_Inputs: IInputActionCollection2, IDisposable
     public interface IInGameActions
     {
         void OnSettings(InputAction.CallbackContext context);
-        void OnMoveTo(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnCameraMovement(InputAction.CallbackContext context);
         void OnCameraZoom(InputAction.CallbackContext context);

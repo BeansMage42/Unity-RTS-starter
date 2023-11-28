@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MoveTo",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "fc2516f0-e94a-4af8-8107-2ca523eddaec",
                     "expectedControlType": "Button",
@@ -79,7 +79,7 @@
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveTo",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

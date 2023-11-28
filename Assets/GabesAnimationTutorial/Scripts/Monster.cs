@@ -18,7 +18,7 @@ public class Monster : MonoBehaviour
     private float health;
     
     
-    private void Start()
+    private void Awake()
     {
         myAnimator = GetComponent<Animator>();
         ai = GetComponent<NavMeshAgent>();
