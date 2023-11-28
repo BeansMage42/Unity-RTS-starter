@@ -6,13 +6,13 @@ public class CreateSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject spawnerUI;
     [SerializeField] private GameObject spawnerPrefab;
-    private GameObject placingObject;
+    //private GameObject placingObject;
     
     public bool isPlacing { get; private set; }
     private Vector3 mousePos;
-    void Start()
+    void Awake()
     {
-        
+        spawnerUI.SetActive(false);
     }
 
     public void StartPlacing()
@@ -21,15 +21,15 @@ public class CreateSpawner : MonoBehaviour
         //{
 
 
-            isPlacing = true;
-            placingObject = Instantiate(spawnerUI, Vector3.zero, Quaternion.identity);
+            Placing();
+            spawnerUI.SetActive(true);
        // }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isPlacing && (placingObject != null))
+        if (isPlacing)
         {
             Ray camray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -37,17 +37,22 @@ public class CreateSpawner : MonoBehaviour
             {
                 
                  mousePos = new Vector3 (hitInfo.point.x, 0.5f, hitInfo.point.z);
-                placingObject.transform.position = mousePos;
+                spawnerUI.transform.position = mousePos;
             }
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Instantiate(spawnerPrefab, mousePos, Quaternion.identity);
-                placingObject = null;
-                isPlacing = false;
+                //placingObject = null;
+                Placing();
+                spawnerUI.transform.position = Vector3.zero;
+                spawnerUI.SetActive(false);
             }
         }
         
     }
 
-
+    private void Placing()
+    {
+        isPlacing = !isPlacing;
+    }
 }

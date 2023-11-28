@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
     {
         /*spawnedMinion = Instantiate(Monster, transform.position, Quaternion.identity).GetComponent<Monster>();
         commander.AddMinion(spawnedMinion);*/
-        Spawn();
+        StartCoroutine("SpawnLoop");
     }
 
    private IEnumerator SpawnLoop()

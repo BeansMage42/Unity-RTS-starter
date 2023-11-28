@@ -16,10 +16,14 @@ public class Monster : MonoBehaviour
 
     [SerializeField] private float maxHealth;
     private float health;
-    
+    [SerializeField] private ParticleSystem selectedAura;
+    private bool auraActive = true;
+    public bool isSelected = false;
     
     private void Awake()
     {
+        ChangeAuraState();
+
         myAnimator = GetComponent<Animator>();
         ai = GetComponent<NavMeshAgent>();
         health = maxHealth;
@@ -44,5 +48,21 @@ public class Monster : MonoBehaviour
         myAnimator.SetFloat(StaticUtilities.IdleAnimId, rngIndex);
     }
     
+    public void ChangeAuraState()
+    {
+        if(selectedAura != null)
+        {
+            if (auraActive)
+            {
+                auraActive = false;
+                selectedAura.Stop();
+            }
+            else
+            {
+                auraActive = true;
+                selectedAura.Play();
+            }
+        }
+    }
 
 }
