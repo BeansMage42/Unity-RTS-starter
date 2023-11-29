@@ -68,10 +68,10 @@ public class Commander : MonoBehaviour
 
             if (Physics.Raycast(camToWorldRay, out RaycastHit hit, 100))
             {
-                Debug.Log("hitSomething");
+               // Debug.Log("hitSomething");
                 if(((1<<hit.collider.gameObject.layer) & StaticUtilities.PlayerLayer) != 0)
                 {
-                    Debug.Log("PlayerValid");
+                    //Debug.Log("PlayerValid");
                     selectedTarget = hit.collider.gameObject.GetComponent<Monster>();
 
                     if (selectedTarget.isSelected) return;
@@ -125,7 +125,7 @@ public class Commander : MonoBehaviour
         controlledMonsters.Add(newMinion);
         if(lastDestination != Vector3.zero)
         {
-            Debug.Log(lastDestination);
+            //Debug.Log(lastDestination);
             newMinion.MoveToTarget(lastDestination);
         }
        

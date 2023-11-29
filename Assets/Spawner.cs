@@ -8,8 +8,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject Monster;
     private Monster spawnedMinion;
     private Commander commander;
-    private float lastSpawnTime;
-    private float currentTime;
+    //private float lastSpawnTime;
+   // private float currentTime;
     private WaitForSeconds waitTime;
 
     private void Awake()
